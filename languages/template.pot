@@ -1,0 +1,295 @@
+# Copyright (C) 2016 Nabeel Molham
+# This file is distributed under the GNU General Public License, version 3, http://www.gnu.org/licenses/gpl-3.0.en.html.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: XML to RSS Feed Converter 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/init\n"
+"POT-Creation-Date: 2016-02-25 21:25+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: \n"
+"Language-Team: Nabeel Molham <n.molham@gmail.com>\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
+"_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
+"esc_html_x:1,2c\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ..\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: node_modules\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+
+#: includes/classes/Backend.php:111
+msgid "Feed Information"
+msgstr ""
+
+#: includes/classes/Backend.php:139 includes/classes/Backend.php:144
+msgid "Feed"
+msgstr ""
+
+#: includes/classes/Backend.php:140
+msgid "XML Feed"
+msgstr ""
+
+#: includes/classes/Backend.php:142
+msgctxt "Post Type General Name"
+msgid "Feeds"
+msgstr ""
+
+#: includes/classes/Backend.php:143
+msgctxt "Post Type Singular Name"
+msgid "Feed"
+msgstr ""
+
+#: includes/classes/Backend.php:145
+msgid "Post Type"
+msgstr ""
+
+#: includes/classes/Backend.php:146
+msgid "Feeds Archives"
+msgstr ""
+
+#: includes/classes/Backend.php:147
+msgid "Parent Feed:"
+msgstr ""
+
+#: includes/classes/Backend.php:148
+msgid "All Feeds"
+msgstr ""
+
+#: includes/classes/Backend.php:149
+msgid "Add New Feed"
+msgstr ""
+
+#: includes/classes/Backend.php:150
+msgid "Add New"
+msgstr ""
+
+#: includes/classes/Backend.php:151
+msgid "New feed"
+msgstr ""
+
+#: includes/classes/Backend.php:152
+msgid "Edit feed"
+msgstr ""
+
+#: includes/classes/Backend.php:153
+msgid "Update Feed"
+msgstr ""
+
+#: includes/classes/Backend.php:154
+msgid "View Feed"
+msgstr ""
+
+#: includes/classes/Backend.php:155
+msgid "Search Feed"
+msgstr ""
+
+#: includes/classes/Backend.php:156
+msgid "Not found"
+msgstr ""
+
+#: includes/classes/Backend.php:157
+msgid "Not found in Trash"
+msgstr ""
+
+#: includes/classes/Backend.php:158
+msgid "Featured Image"
+msgstr ""
+
+#: includes/classes/Backend.php:159
+msgid "Set featured image"
+msgstr ""
+
+#: includes/classes/Backend.php:160
+msgid "Remove featured image"
+msgstr ""
+
+#: includes/classes/Backend.php:161
+msgid "Use as featured image"
+msgstr ""
+
+#: includes/classes/Backend.php:162
+msgid "Insert into feed"
+msgstr ""
+
+#: includes/classes/Backend.php:163
+msgid "Uploaded to this feed"
+msgstr ""
+
+#: includes/classes/Backend.php:164
+msgid "Feeds list"
+msgstr ""
+
+#: includes/classes/Backend.php:165
+msgid "Feeds list navigation"
+msgstr ""
+
+#: includes/classes/Backend.php:166
+msgid "Filter Feeds list"
+msgstr ""
+
+#: includes/classes/Feed.php:55
+msgid "Empty feed URL"
+msgstr ""
+
+#: includes/classes/Feed.php:116
+msgid "Unable to parse feed content"
+msgstr ""
+
+#: includes/classes/Feed.php:135
+msgid "No results found using the XPath"
+msgstr ""
+
+#: includes/classes/Frontend.php:68
+msgid "XPath query not set."
+msgstr ""
+
+#: init.php:131
+#, php-format
+msgid "Template <code>%s</code> File not found, calculated path: <code>%s</code>"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:8
+msgid "Fetch Details"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:12
+msgid "Feed URL"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:18
+msgid "Feed Encoding"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:24
+msgid "Item/Article XPath"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:29
+msgid ""
+"XPath (the XML Path language) is a language for finding information in an XML "
+"document."
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:35
+msgid "Preview"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:39
+msgid "Fetch a Preview"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:48
+msgid "Generated RSS Feed Details"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:52
+msgid "RSS Feed URL"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:58
+msgid "Encoding"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:64 views/meta_boxes/feed_info.php:106
+msgid "Title"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:70 views/meta_boxes/feed_info.php:141
+msgid "Description"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:76
+msgid "Language"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:80
+msgid "Table of Language Culture Names, Codes"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:85
+msgid "Update Period"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:91
+msgid "Update Frequency"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:101
+msgid "Generated RSS Feed Item Details"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:102
+msgid "XML to feed item fields Mapping"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:109
+msgid "The title of the item"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:113
+msgid "Link"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:116
+msgid "The URL of the item"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:120
+msgid "Published Date"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:123
+msgid "Indicates when the item was published"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:127
+msgid "Creator/Author"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:130
+msgid "Email address of the author of the item"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:134
+msgid "GUID"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:137
+msgid "A string that uniquely identifies the item"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:144
+msgid "The item synopsis"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:148 views/meta_boxes/feed_info.php:150
+msgid "Use Attribute"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:151
+msgid "Yes"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:152
+msgid "No"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:157
+msgid "Attribute Name"
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:160 views/meta_boxes/feed_info.php:167
+msgid "required if \"Use Attribute\" is \"yes\""
+msgstr ""
+
+#: views/meta_boxes/feed_info.php:164
+msgid "Column Name"
+msgstr ""
