@@ -13,25 +13,41 @@ if ( ! function_exists( 'xrfc_item_field' ) ):
 	/**
 	 * Get feed item field value based on fields mapping
 	 *
-	 * @param string $field_name
-	 * @param array  $item
-	 * @param array  $fields_map
-	 * @param string $default_value
+	 * @param string                 $field_name
+	 * @param array|SimpleXMLElement $item
+	 * @param array                  $fields_map
+	 * @param string                 $default_value
 	 *
 	 * @return string
 	 */
-	function xrfc_item_field( $field_name, &$item, &$fields_map, $default_value = '' ) {
-		// vars
+	function xrfc_item_field( $field_name, $item, $fields_map, $default_value = '' ) {
+
 		$_field_name = $field_name;
 		$field_name  = isset( $fields_map[ $field_name ] ) ? $fields_map[ $field_name ] : $field_name;
-		$field_value = isset( $item[ $field_name ] ) ? $item[ $field_name ] : $default_value;
 
-		if ( 'description' === $field_name ) {
-			$_field_name = 'excerpt';
-			foreach ( $item as $item_field_name => $item_field_value ) {
-				// append xml full data
-				$field_value .= '<p><strong>' . $item_field_name . '</strong>: ' . $item_field_value . '</p>';
+		if ( is_array( $item ) ) {
+
+			$field_value = isset( $item[ $field_name ] ) ? $item[ $field_name ] : $default_value;
+
+			if ( 'description' === $field_name ) {
+				$_field_name = 'excerpt';
+				foreach ( $item as $item_field_name => $item_field_value ) {
+					// append xml full data
+					$field_value .= '<p><strong>' . $item_field_name . '</strong>: ' . $item_field_value . '</p>';
+				}
 			}
+
+		} else {
+
+			if ( ! empty( $field_name ) ) {
+
+				$field_query = $item->xpath( ltrim( $field_name, '/\\' ) );
+				if ( false !== $field_name && count( $field_query ) ) {
+					$field_value = (string) array_pop( $field_query );
+				}
+
+			}
+
 		}
 
 		return apply_filters( 'the_' . $_field_name . '_rss', $field_value, 'rss2' );

@@ -48,7 +48,7 @@ class Frontend extends Component {
 
 		// vars
 		$feed_info       = $this->feed->get_feed_info( $feed_id );
-		$feed_query      = $this->feed->fetch_feed( $feed_id, XRFC_USE_CACHE, 'yes' === $feed_info['item']['use_attribute'] ? OBJECT : ARRAY_A );
+		$feed_query      = $this->feed->fetch_feed( $feed_id, XRFC_USE_CACHE );
 		$last_build_date = get_post_field( 'post_modified_gmt', $feed_id );
 
 		if ( is_wp_error( $feed_query ) ) {

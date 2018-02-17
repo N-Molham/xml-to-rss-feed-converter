@@ -33,7 +33,8 @@ do_action( 'xrfc_rss2_tag_pre' );
 
 	<channel>
 		<title><![CDATA[<?php echo $feed_info['rss']['title']; ?>]]></title>
-		<link><![CDATA[<?php self_link(); ?>]]></link>
+		<link>
+		<![CDATA[<?php self_link(); ?>]]></link>
 		<atom:link href="<?php self_link(); ?>" rel="self" type="application/rss+xml" />
 		<description><![CDATA[<?php echo $feed_info['rss']['description']; ?>]]></description>
 		<lastBuildDate><?php echo $last_build_date; ?></lastBuildDate>
@@ -47,10 +48,10 @@ do_action( 'xrfc_rss2_tag_pre' );
 		do_action( 'xrfc_rss2_head' );
 
 		// vars
-		$fields_map = &$feed_info['item'];
+		$fields_map = $feed_info['item'];
 		$item       = null;
 
-		for ( $i = 0, $count = count( $feed_query ); $i < $count; $i++ ):
+		for ( $i = 0, $count = count( $feed_query ); $i < $count; $i ++ ):
 			$item = &$feed_query[ $i ];
 			?>
 			<item>
@@ -60,12 +61,13 @@ do_action( 'xrfc_rss2_tag_pre' );
 				<author><![CDATA[<?php echo xrfc_item_field( 'creator', $item, $fields_map, $admin_email . ' (' . get_user_by( 'email', $admin_email )->display_name . ')' ); ?>]]></author>
 				<guid isPermaLink="false"><![CDATA[<?php echo xrfc_item_field( 'guid', $item, $fields_map ); ?>]]></guid>
 				<discount><![CDATA[<?php echo xrfc_item_field( 'discount', $item, $fields_map ); ?>]]></discount>
-				<comments><![CDATA[<?php echo str_replace('.', ',', xrfc_item_field( 'oldprice', $item, $fields_map )); ?>]]></comments>
-				<category><![CDATA[<?php echo str_replace('.', ',', xrfc_item_field( 'newprice', $item, $fields_map )); ?>]]></category>
+				<comments><![CDATA[<?php echo str_replace( '.', ',', xrfc_item_field( 'oldprice', $item, $fields_map ) ); ?>]]></comments>
+				<category><![CDATA[<?php echo str_replace( '.', ',', xrfc_item_field( 'newprice', $item, $fields_map ) ); ?>]]></category>
 				<image><![CDATA[<?php echo xrfc_item_field( 'featured_image', $item, $fields_map ); ?>]]></image>
 				<description><![CDATA[<?php echo xrfc_item_field( 'description', $item, $fields_map ); ?>]]></description>
-				<?php rss_enclosure(); ?>
 				<?php
+				rss_enclosure();
+
 				/**
 				 * Fires at the end of each RSS2 feed item.
 				 */

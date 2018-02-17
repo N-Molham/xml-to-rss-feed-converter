@@ -3,7 +3,7 @@
 /**
  * Plugin Name: XML to RSS Feed Converter
  * Description: Converts any XML feed to valid RSS feed
- * Version: 1.5.0
+ * Version: 1.6.0
  * Author: Nabeel Molham
  * Author URI: http://nabeel.molham.me/
  * Text Domain: xml-to-rss-converter
@@ -53,7 +53,7 @@ class Plugin extends Singular {
 	 *
 	 * @var string
 	 */
-	public $version = '1.5.0';
+	public $version = '1.6.0';
 
 	/**
 	 * Feed custom post type key name
