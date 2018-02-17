@@ -7,14 +7,13 @@
  *
  * @package WP_Plugins\PretParkDeals\XML_RSS_Feed_Converter
  */
-final class Helpers
-{
+final class Helpers {
 	/**
 	 * Text Domain
 	 *
 	 * @var string
 	 */
-	static $text_domain = XRFC_DOMAIN;
+	public static $text_domain = XRFC_DOMAIN;
 
 	/**
 	 * Cast given value to string
@@ -23,10 +22,8 @@ final class Helpers
 	 *
 	 * @return string
 	 */
-	public static function to_string( $value )
-	{
-		if ( is_array( $value ) || ( is_object( $value ) && !method_exists( $value, '__toString' ) ) )
-		{
+	public static function to_string( $value ) {
+		if ( is_array( $value ) || ( is_object( $value ) && ! method_exists( $value, '__toString' ) ) ) {
 			// convert to JSON string
 			return json_encode( $value );
 		}
@@ -42,16 +39,13 @@ final class Helpers
 	 *
 	 * @return bool
 	 */
-	public static function is_valid_url( $url )
-	{
-		if ( 0 !== strpos( $url, 'http://' ) && 0 !== strpos( $url, 'https://' ) )
-		{
+	public static function is_valid_url( $url ) {
+		if ( 0 !== strpos( $url, 'http://' ) && 0 !== strpos( $url, 'https://' ) ) {
 			// Must start with http:// or https://
 			return false;
 		}
 
-		if ( !filter_var( $url, FILTER_VALIDATE_URL ) )
-		{
+		if ( ! filter_var( $url, FILTER_VALIDATE_URL ) ) {
 			// Must pass validation
 			return false;
 		}
@@ -64,8 +58,7 @@ final class Helpers
 	 *
 	 * @return string
 	 */
-	public static function plugin_version()
-	{
+	public static function plugin_version() {
 		return Plugin::get_instance()->version;
 	}
 
@@ -76,10 +69,8 @@ final class Helpers
 	 *
 	 * @return bool
 	 */
-	public static function is_plugin_active( $plugin_file )
-	{
-		if ( !function_exists( 'is_plugin_active' ) )
-		{
+	public static function is_plugin_active( $plugin_file ) {
+		if ( ! function_exists( 'is_plugin_active' ) ) {
 			include_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
 
@@ -93,10 +84,8 @@ final class Helpers
 	 *
 	 * @return bool
 	 */
-	public static function is_plugin_inactive( $plugin_file )
-	{
-		if ( !function_exists( 'is_plugin_inactive' ) )
-		{
+	public static function is_plugin_inactive( $plugin_file ) {
+		if ( ! function_exists( 'is_plugin_inactive' ) ) {
 			include_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
 
@@ -115,16 +104,13 @@ final class Helpers
 	 *
 	 * @return string|null
 	 */
-	public static function sanitize_hex_color( $color )
-	{
-		if ( '' === $color )
-		{
+	public static function sanitize_hex_color( $color ) {
+		if ( '' === $color ) {
 			return '';
 		}
 
 		// 3 or 6 hex digits, or the empty string.
-		if ( preg_match( '|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) )
-		{
+		if ( preg_match( '|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) ) {
 			return $color;
 		}
 
@@ -147,12 +133,10 @@ final class Helpers
 	 *
 	 * @return string|null
 	 */
-	public static function sanitize_hex_color_no_hash( $color )
-	{
+	public static function sanitize_hex_color_no_hash( $color ) {
 		$color = ltrim( $color, '#' );
 
-		if ( '' === $color )
-		{
+		if ( '' === $color ) {
 			return '';
 		}
 
@@ -165,18 +149,15 @@ final class Helpers
 	 * @since 1.0
 	 * @return string
 	 */
-	public static function get_visitor_IP()
-	{
+	public static function get_visitor_IP() {
 		$client  = isset( $_SERVER['HTTP_CLIENT_IP'] ) ? $_SERVER['HTTP_CLIENT_IP'] : null;
 		$forward = isset( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : null;
 
-		if ( $client && filter_var( $client, FILTER_VALIDATE_IP ) )
-		{
+		if ( $client && filter_var( $client, FILTER_VALIDATE_IP ) ) {
 			return $client;
 		}
 
-		if ( $client && filter_var( $forward, FILTER_VALIDATE_IP ) )
-		{
+		if ( $client && filter_var( $forward, FILTER_VALIDATE_IP ) ) {
 			return $forward;
 		}
 
@@ -189,8 +170,7 @@ final class Helpers
 	 * @since 1.0
 	 * @return string
 	 */
-	public static function enqueue_suffix()
-	{
+	public static function enqueue_suffix() {
 		return self::is_script_debugging() ? '' : '.min';
 	}
 
@@ -199,8 +179,7 @@ final class Helpers
 	 *
 	 * @return bool
 	 */
-	public static function is_script_debugging()
-	{
+	public static function is_script_debugging() {
 		return defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG;
 	}
 
@@ -208,14 +187,12 @@ final class Helpers
 	 * URL Redirect
 	 *
 	 * @param string $target
-	 * @param number $status
+	 * @param int    $status
 	 *
 	 * @return void
 	 */
-	public static function redirect( $target = '', $status = 302 )
-	{
-		if ( '' == $target && isset( $_REQUEST['_wp_http_referer'] ) )
-		{
+	public static function redirect( $target = '', $status = 302 ) {
+		if ( '' === $target && isset( $_REQUEST['_wp_http_referer'] ) ) {
 			$target = esc_url( $_REQUEST['_wp_http_referer'] );
 		}
 
@@ -233,12 +210,10 @@ final class Helpers
 	 *
 	 * @return string
 	 */
-	public static function sanitize_text_field_with_linebreaks( $str )
-	{
+	public static function sanitize_text_field_with_linebreaks( $str ) {
 		$filtered = wp_check_invalid_utf8( $str );
 
-		if ( strpos( $filtered, '<' ) !== false )
-		{
+		if ( strpos( $filtered, '<' ) !== false ) {
 			$filtered = wp_pre_kses_less_than( $filtered );
 
 			// This will strip extra whitespace for us.
@@ -246,14 +221,12 @@ final class Helpers
 		}
 
 		$found = false;
-		while ( preg_match( '/%[a-f0-9]{2}/i', $filtered, $match ) )
-		{
+		while ( preg_match( '/%[a-f0-9]{2}/i', $filtered, $match ) ) {
 			$filtered = str_replace( $match[0], '', $filtered );
 			$found    = true;
 		}
 
-		if ( $found )
-		{
+		if ( $found ) {
 			// Strip out the whitespace that may now exist after removing the octets.
 			$filtered = trim( preg_replace( '/ +/', ' ', $filtered ) );
 		}
@@ -276,15 +249,12 @@ final class Helpers
 	 *
 	 * @return string
 	 */
-	public static function parse_attributes( $attrs )
-	{
-		if ( empty( $attrs ) )
-		{
+	public static function parse_attributes( $attrs ) {
+		if ( empty( $attrs ) ) {
 			return '';
 		}
 
-		array_walk( $attrs, function ( &$item, $key )
-		{
+		array_walk( $attrs, function ( &$item, $key ) {
 			$item = $key . '="' . esc_attr( is_array( $item ) ? implode( ' ', $item ) : $item ) . '"';
 		} );
 

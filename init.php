@@ -3,7 +3,7 @@
 /**
  * Plugin Name: XML to RSS Feed Converter
  * Description: Converts any XML feed to valid RSS feed
- * Version: 1.4.5
+ * Version: 1.5.0
  * Author: Nabeel Molham
  * Author URI: http://nabeel.molham.me/
  * Text Domain: xml-to-rss-converter
@@ -11,8 +11,7 @@
  * License: GNU General Public License, version 3, http://www.gnu.org/licenses/gpl-3.0.en.html
  */
 
-if ( !defined( 'WPINC' ) )
-{
+if ( ! defined( 'WPINC' ) ) {
 	// Exit if accessed directly
 	die();
 }
@@ -33,8 +32,7 @@ define( 'XRFC_URI', plugin_dir_url( XRFC_MAIN_FILE ) );
 // localization text Domain
 define( 'XRFC_DOMAIN', 'xml-to-rss-converter' );
 
-if ( !defined( 'XRFC_USE_CACHE' ) )
-{
+if ( ! defined( 'XRFC_USE_CACHE' ) ) {
 	// cache settings
 	define( 'XRFC_USE_CACHE', true );
 }
@@ -49,57 +47,55 @@ require_once XRFC_DIR . 'includes/functions.php';
  *
  * @package WP_Plugins\PretParkDeals\XML_RSS_Feed_Converter
  */
-class Plugin extends Singular
-{
+class Plugin extends Singular {
 	/**
 	 * Plugin version
 	 *
 	 * @var string
 	 */
-	var $version = '1.4.5';
+	public $version = '1.5.0';
 
 	/**
 	 * Feed custom post type key name
 	 *
 	 * @var string
 	 */
-	var $post_type_feed = 'xrfc_feed';
+	public $post_type_feed = 'xrfc_feed';
 
 	/**
 	 * Backend
 	 *
 	 * @var Backend
 	 */
-	var $backend;
+	public $backend;
 
 	/**
 	 * Backend
 	 *
 	 * @var Frontend
 	 */
-	var $frontend;
+	public $frontend;
 
 	/**
 	 * Feed
 	 *
 	 * @var Feed
 	 */
-	var $feed;
+	public $feed;
 
 	/**
 	 * Backend
 	 *
 	 * @var Ajax_Handler
 	 */
-	var $ajax;
+	public $ajax;
 
 	/**
 	 * Initialization
 	 *
 	 * @return void
 	 */
-	protected function init()
-	{
+	protected function init() {
 		// load language files
 		add_action( 'plugins_loaded', [ &$this, 'load_language' ] );
 
@@ -126,13 +122,11 @@ class Plugin extends Singular
 	 *
 	 * @return void
 	 */
-	public function load_view( $view_name, $args = null )
-	{
+	public function load_view( $view_name, $args = null ) {
 		// build view file path
 		$__view_name     = $view_name;
 		$__template_path = XRFC_DIR . 'views/' . $__view_name . '.php';
-		if ( !file_exists( $__template_path ) )
-		{
+		if ( ! file_exists( $__template_path ) ) {
 			// file not found!
 			wp_die( sprintf( __( 'Template <code>%s</code> File not found, calculated path: <code>%s</code>', XRFC_DOMAIN ), $__view_name, $__template_path ) );
 		}
@@ -140,8 +134,7 @@ class Plugin extends Singular
 		// clear vars
 		unset( $view_name );
 
-		if ( !empty( $args ) )
-		{
+		if ( ! empty( $args ) ) {
 			// extract passed args into variables
 			extract( $args, EXTR_OVERWRITE );
 		}
@@ -178,8 +171,7 @@ class Plugin extends Singular
 	 *
 	 * @return void
 	 */
-	public function load_language()
-	{
+	public function load_language() {
 		load_plugin_textdomain( XRFC_DOMAIN, false, dirname( plugin_basename( XRFC_MAIN_FILE ) ) . '/languages' );
 	}
 
@@ -188,8 +180,7 @@ class Plugin extends Singular
 	 *
 	 * @return void
 	 */
-	public function plugin_activated()
-	{
+	public function plugin_activated() {
 		// refresh rewrite rules cache
 		flush_rewrite_rules();
 	}
@@ -201,10 +192,8 @@ class Plugin extends Singular
 	 *
 	 * @return void
 	 */
-	public function autoloader( $class_name )
-	{
-		if ( strpos( $class_name, __NAMESPACE__ ) === false )
-		{
+	public function autoloader( $class_name ) {
+		if ( strpos( $class_name, __NAMESPACE__ ) === false ) {
 			// skip non related classes
 			return;
 		}
@@ -214,8 +203,7 @@ class Plugin extends Singular
 				'\\',
 			], [ '', DIRECTORY_SEPARATOR ], $class_name ) . '.php';
 
-		if ( file_exists( $class_path ) )
-		{
+		if ( file_exists( $class_path ) ) {
 			// load class file if found
 			require_once $class_path;
 		}

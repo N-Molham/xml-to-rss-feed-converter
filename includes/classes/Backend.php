@@ -8,8 +8,7 @@ use WP_Post;
  *
  * @package WP_Plugins\PretParkDeals\XML_RSS_Feed_Converter
  */
-class Backend extends Component
-{
+class Backend extends Component {
 	/**
 	 * Feed
 	 *
@@ -22,8 +21,7 @@ class Backend extends Component
 	 *
 	 * @return void
 	 */
-	protected function init()
-	{
+	protected function init() {
 		parent::init();
 
 		// vars
@@ -47,24 +45,20 @@ class Backend extends Component
 	 *
 	 * @return void
 	 */
-	public function preview_feed_fetch()
-	{
-		if ( !current_user_can( 'manage_options' ) )
-		{
+	public function preview_feed_fetch() {
+		if ( ! current_user_can( 'manage_options' ) ) {
 			// skip non-privileged users
 			return;
 		}
 
 		$feed_id = filter_input( INPUT_GET, 'feed_id', FILTER_SANITIZE_NUMBER_INT );
-		if ( '' === $feed_id || null === get_post( $feed_id ) )
-		{
+		if ( '' === $feed_id || null === get_post( $feed_id ) ) {
 			// skip invalid feed ID
 			return;
 		}
 
 		$fetch = $this->feed->fetch_feed( $feed_id, false );
-		if ( is_wp_error( $fetch ) )
-		{
+		if ( is_wp_error( $fetch ) ) {
 			// something wrong
 			wp_die( $fetch->get_error_message(), $fetch->get_error_code() );
 		}
@@ -81,11 +75,9 @@ class Backend extends Component
 	 *
 	 * @return void
 	 */
-	public function save_feed_info( $post_id )
-	{
+	public function save_feed_info( $post_id ) {
 		$new_info = filter_input( INPUT_POST, $this->feed->feed_meta_key, FILTER_SANITIZE_STRING, FILTER_REQUIRE_ARRAY );
-		if ( empty( $new_info ) )
-		{
+		if ( empty( $new_info ) ) {
 			// skip empty posting
 			return;
 		}
@@ -100,10 +92,8 @@ class Backend extends Component
 	 *
 	 * @return void
 	 */
-	public function register_meta_boxes( $post_type = '' )
-	{
-		if ( $this->feed->post_type !== $post_type )
-		{
+	public function register_meta_boxes( $post_type = '' ) {
+		if ( $this->feed->post_type !== $post_type ) {
 			// skip non-related post types
 			return;
 		}
@@ -119,8 +109,7 @@ class Backend extends Component
 	 *
 	 * @return void
 	 */
-	public function load_meta_box( $post, $meta_box )
-	{
+	public function load_meta_box( $post, $meta_box ) {
 		xrfc_view( 'meta_boxes/' . str_replace( 'xrfc_', '', $meta_box['id'] ), [
 			'feed_id'      => $post->ID,
 			'field_values' => $this->feed->get_feed_info( $post->ID ),
@@ -133,8 +122,7 @@ class Backend extends Component
 	 *
 	 * @return void
 	 */
-	function register_post_type()
-	{
+	public function register_post_type() {
 		$args = [
 			'label'               => __( 'Feed', XRFC_DOMAIN ),
 			'description'         => __( 'XML Feed', XRFC_DOMAIN ),

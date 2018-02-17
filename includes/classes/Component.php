@@ -5,8 +5,7 @@
  *
  * @package WP_Plugins\PretParkDeals\XML_RSS_Feed_Converter
  */
-class Component extends Singular
-{
+class Component extends Singular {
 	/**
 	 * Plugin Main Component
 	 *
@@ -19,8 +18,7 @@ class Component extends Singular
 	 *
 	 * @return void
 	 */
-	protected function init()
-	{
+	protected function init() {
 		// vars
 		$this->plugin = Plugin::get_instance();
 	}
